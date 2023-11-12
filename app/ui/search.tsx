@@ -15,6 +15,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     (e: ChangeEvent<HTMLInputElement>) => {
       const searchTerm = e.target.value;
       const params = new URLSearchParams(searchParams);
+      params.set("page", "1");
 
       if (searchTerm) {
         params.set("query", searchTerm);
@@ -22,7 +23,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         params.delete("query");
       }
 
-      replace(`${pathname}/?${params.toString()}`);
+      replace(`${pathname}?${params.toString()}`);
     },
     300,
   );
